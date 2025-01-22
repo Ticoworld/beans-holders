@@ -14,6 +14,12 @@ const TokenHolders = () => {
   const [above1Trillion, setAbove1Trillion] = useState(0);
   const [below1Trillion, setBelow1Trillion] = useState(0);
 
+  // Extract the name part after ::
+  const getTokenName = () => {
+    const namePart = tokenAddress.split('::')[1];
+    return namePart ? namePart : 'Token'; // Default to "Token Holders" if no name part
+  };
+
   // Handle input field changes
   const handleInputChange = (e) => {
     setTokenAddress(e.target.value);
@@ -134,7 +140,7 @@ const TokenHolders = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4 sm:p-6">
       <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-        Beanns Holders
+        {getTokenName()} Holders
       </h1>
 
       <div className="flex flex-col items-center gap-4 w-full max-w-md">
